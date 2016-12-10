@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class WeaponTrail : MonoBehaviour {
 
     // 軌跡のポリゴン数
-    private const int MAX_TRAIL_NUM = 10;
+    private const int MAX_TRAIL_NUM = 7;
     // 軌跡を描く根の位置
     private GameObject rootObject;
     // 軌跡を描く先端の位置

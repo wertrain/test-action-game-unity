@@ -36,10 +36,8 @@ public class KnightMain : MonoBehaviour {
                 animation.CrossFade("Attack");
                 animation.wrapMode = WrapMode.Once;
                 isAttack = true;
-                return;
             }
-
-            if (Input.GetKey("up") || Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("down"))
+            else if (Input.GetKey("up") || Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("down"))
             {
                 Vector3 forward = Camera.main.transform.TransformDirection(Vector3.forward);
                 Vector3 right = Camera.main.transform.TransformDirection(Vector3.right);
@@ -52,14 +50,15 @@ public class KnightMain : MonoBehaviour {
                 // 移動方向への回転
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, moveDirection, 5f * Time.deltaTime, 0f);
                 transform.rotation = Quaternion.LookRotation(newDir);
-
                 transform.position += moveDirection;
 
                 animation.CrossFade("Walk");
+                animation.wrapMode = WrapMode.Loop;
             }
             else
             {
                 animation.CrossFade("Wait");
+                animation.wrapMode = WrapMode.Loop;
             }
         }
     }
