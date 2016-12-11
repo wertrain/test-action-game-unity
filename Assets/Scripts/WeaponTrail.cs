@@ -22,12 +22,17 @@ public class WeaponTrail : MonoBehaviour {
     }
     // レンダラー
     public new GameObject renderer;
+    // マテリアル
+    public new Material material;
 
     // Use this for initialization
     void Start () {
         rootObject = GameObject.Find("Root");
         tipObject = GameObject.Find("Tip");
         positionQueue = new Queue();
+
+        var meshrenderer = renderer.GetComponent<MeshRenderer>();
+        meshrenderer.material = material;
 
         /*var mesh = new Mesh();
         mesh.vertices = new Vector3[] {
@@ -62,7 +67,10 @@ public class WeaponTrail : MonoBehaviour {
             var array = positionQueue.ToArray();
             var vertices = new List<Vector3>();
             var triangles = new List<int>();
+            var uvs = new List<Vector2>();
             int baseNum = 0;
+            float uvBaseNum = 1.0f / (positionQueue.Count - 1);
+            //1 ÷ 過去フレーム数 - 1
             for (int i = 0; i < positionQueue.Count - 1; ++i)
             {
                 WeaponPosInfo i0 = (WeaponPosInfo)array[i + 0];
@@ -83,9 +91,20 @@ public class WeaponTrail : MonoBehaviour {
                 };
                 triangles.AddRange(tris);
                 baseNum += 4;
+
+                Vector2[] uv = new Vector2[] {
+                    new Vector2 (uvBaseNum * i, 1f),
+                    new Vector2 (uvBaseNum * (i + 1), 1f),
+                    new Vector2 (uvBaseNum * i, 0),
+                    new Vector2 (uvBaseNum * (i + 1), 0),
+                };
+                uvs.AddRange(uv);
+
+                
             }
             mesh.vertices = vertices.ToArray();
             mesh.triangles = triangles.ToArray();
+            mesh.uv = uvs.ToArray();
             var filter = renderer.GetComponent<MeshFilter>();
             filter.sharedMesh = mesh;
         }
