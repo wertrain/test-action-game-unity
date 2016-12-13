@@ -23,12 +23,12 @@ public class WeaponTrail : MonoBehaviour {
     // レンダラー
     public new GameObject renderer;
     // マテリアル
-    public new Material material;
+    public Material material;
 
     // Use this for initialization
     void Start () {
-        rootObject = GameObject.Find("Root");
-        tipObject = GameObject.Find("Tip");
+        rootObject = transform.FindChild("Root").gameObject;
+        tipObject = transform.FindChild("Tip").gameObject;
         positionQueue = new Queue();
 
         var meshrenderer = renderer.GetComponent<MeshRenderer>();
