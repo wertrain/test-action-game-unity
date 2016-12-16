@@ -2,40 +2,60 @@
 using System.Collections;
 
 public class KnightMain : MonoBehaviour {
-
+    // 
+    public GameObject weaponTrailRenderer;
     // 旧アニメーションコンポーネント
-    private Animation animation;
+    private Animation animControl;
     // 移動速度
     private float speed;
     // 攻撃中かどうか
     private bool isAttack;
+    // 剣当たり判定領域
+    private BoxCollider swordCollider;
+    // 攻撃開始時間   
+    private float attackStartTime;
 
     // Use this for initialization
     void Start () {
-        animation = GetComponent<Animation>();
-        animation.Play("Wait");
-        animation.wrapMode = WrapMode.Loop;
+        animControl = GetComponent<Animation>();
+        swordCollider = GetComponentInChildren<BoxCollider>();
+        animControl.Play("Wait");
+        animControl.wrapMode = WrapMode.Loop;
         speed = 0.05f;
         isAttack = false;
+        weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = false;
     }
 	
     // Update is called once per frame
-    void Update () {
-
+    void Update ()
+    {
         if (isAttack)
         {
-            if (!animation.isPlaying)
+            if (animControl.isPlaying)
+            {
+                if (!swordCollider.enabled && attackStartTime + 0.35f < Time.time)
+                {
+                    swordCollider.enabled = true;
+                    weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = true;
+                }
+            }
+            else
             {
                 isAttack = false;
+                swordCollider.enabled = false;
+
+                weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = false;
             }
         }
         else
         {
             if (Input.GetKey("space"))
             {
-                animation.CrossFade("Attack");
-                animation.wrapMode = WrapMode.Once;
+                animControl.CrossFade("Attack");
+                animControl.wrapMode = WrapMode.Once;
+
                 isAttack = true;
+                attackStartTime = Time.time;
             }
             else if (Input.GetKey("up") || Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("down"))
             {
@@ -52,13 +72,13 @@ public class KnightMain : MonoBehaviour {
                 transform.rotation = Quaternion.LookRotation(newDir);
                 transform.position += moveDirection;
 
-                animation.CrossFade("Walk");
-                animation.wrapMode = WrapMode.Loop;
+                animControl.CrossFade("Walk");
+                animControl.wrapMode = WrapMode.Loop;
             }
             else
             {
-                animation.CrossFade("Wait");
-                animation.wrapMode = WrapMode.Loop;
+                animControl.CrossFade("Wait");
+                animControl.wrapMode = WrapMode.Loop;
             }
         }
     }

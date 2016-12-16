@@ -33,22 +33,6 @@ public class WeaponTrail : MonoBehaviour {
 
         var meshrenderer = renderer.GetComponent<MeshRenderer>();
         meshrenderer.material = material;
-
-        /*var mesh = new Mesh();
-        mesh.vertices = new Vector3[] {
-            new Vector3 (tipObject.transform.localPosition.x, tipObject.transform.localPosition.y - 0.1f, tipObject.transform.localPosition.z),
-            new Vector3 (tipObject.transform.localPosition.x, tipObject.transform.localPosition.y + 0.1f, tipObject.transform.localPosition.z),
-            new Vector3 (rootObject.transform.localPosition.x, rootObject.transform.localPosition.y + 0.1f, rootObject.transform.localPosition.z),
-            new Vector3 (rootObject.transform.localPosition.x, rootObject.transform.localPosition.y - 0.1f, rootObject.transform.localPosition.z),
-        };
-        mesh.triangles = new int[] {
-            0, 2, 1,
-            0, 3, 2
-        };
-
-        var filter = GetComponent<MeshFilter>();
-        filter.sharedMesh = mesh;*/
-
     }
 
     // Update is called once per frame
@@ -69,8 +53,8 @@ public class WeaponTrail : MonoBehaviour {
             var triangles = new List<int>();
             var uvs = new List<Vector2>();
             int baseNum = 0;
-            float uvBaseNum = 1.0f / (positionQueue.Count - 1);
             //1 ÷ 過去フレーム数 - 1
+            float uvBaseNum = 1.0f / (positionQueue.Count - 1);
             for (int i = 0; i < positionQueue.Count - 1; ++i)
             {
                 WeaponPosInfo i0 = (WeaponPosInfo)array[i + 0];
@@ -99,8 +83,6 @@ public class WeaponTrail : MonoBehaviour {
                     new Vector2 (uvBaseNum * (i + 1), 0),
                 };
                 uvs.AddRange(uv);
-
-                
             }
             mesh.vertices = vertices.ToArray();
             mesh.triangles = triangles.ToArray();
