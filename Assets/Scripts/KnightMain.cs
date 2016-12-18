@@ -1,19 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KnightMain : MonoBehaviour {
-    // 
-    public GameObject weaponTrailRenderer;
-    // 旧アニメーションコンポーネント
-    private Animation animControl;
-    // 移動速度
-    private float speed;
-    // 攻撃中かどうか
-    private bool isAttack;
+public class KnightMain : CharaBase {
     // 剣当たり判定領域
     private BoxCollider swordCollider;
-    // 攻撃開始時間   
-    private float attackStartTime;
 
     // Use this for initialization
     void Start () {
@@ -23,7 +13,6 @@ public class KnightMain : MonoBehaviour {
         animControl.wrapMode = WrapMode.Loop;
         speed = 0.05f;
         isAttack = false;
-        weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = false;
     }
 	
     // Update is called once per frame
@@ -36,15 +25,12 @@ public class KnightMain : MonoBehaviour {
                 if (!swordCollider.enabled && attackStartTime + 0.35f < Time.time)
                 {
                     swordCollider.enabled = true;
-                    weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
             else
             {
                 isAttack = false;
                 swordCollider.enabled = false;
-
-                weaponTrailRenderer.GetComponent<MeshRenderer>().enabled = false;
             }
         }
         else
