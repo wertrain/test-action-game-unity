@@ -6,13 +6,15 @@ public class KnightMain : CharaBase {
     private BoxCollider swordCollider;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         animControl = GetComponent<Animation>();
         swordCollider = GetComponentInChildren<BoxCollider>();
         animControl.Play("Wait");
         animControl.wrapMode = WrapMode.Loop;
         speed = 0.05f;
         isAttack = false;
+        swordCollider.enabled = false;
     }
 	
     // Update is called once per frame

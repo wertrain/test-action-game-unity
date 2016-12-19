@@ -36,7 +36,8 @@ public class SlimeMain : CharaBase
 
                 animControl.CrossFade("Wait");
                 animControl.wrapMode = WrapMode.Loop;
-                Debug.Log("Damage");
+
+                Destroy(gameObject);
             }
         }
     }
