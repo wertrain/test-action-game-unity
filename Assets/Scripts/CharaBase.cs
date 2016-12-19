@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CharaBase : MonoBehaviour
 {
-    // 旧アニメーションコンポーネント
-    protected Animation animControl;
+    // アニメ管理
+    protected CharaAnimController animControl;
     // 移動速度
     protected float speed;
     // 攻撃中かどうか
@@ -13,8 +13,6 @@ public class CharaBase : MonoBehaviour
     protected float attackStartTime;
     // 状態
     protected int state;
-    // アニメ状態
-    protected int animState;
     // ノックバック方向
     protected Vector3 knockbackDir;
     // ノックバック時間
@@ -26,14 +24,13 @@ public class CharaBase : MonoBehaviour
         Wait = 1 << 0,
         KnockBack = 1 << 1
     };
-    // アニメ定数
-    protected enum AnimState
+
+    // アニメーションコントローラーの初期化
+    public void InitAnimController(Animation anim)
     {
-        Wait = 1 << 0,
-        Walk = 1 << 1,
-        Damage = 1 << 2,
-        Dead = 1 << 3
-    };
+        animControl = new CharaAnimController(anim);
+    }
+
     // ノックバックさせる
     protected void Knockback(Vector3 dir)
     {
@@ -43,8 +40,6 @@ public class CharaBase : MonoBehaviour
         state |= (int)State.KnockBack;
         knockBackStartTime = Time.time;
 
-        animState |= (int)AnimState.Damage;
-        animControl.CrossFade("Damage");
-        animControl.wrapMode = WrapMode.Once;
+        animControl.CrossFadeOnceAnim(CharaAnimController.AnimId.Damage);
     }
 }

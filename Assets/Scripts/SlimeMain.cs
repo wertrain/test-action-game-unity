@@ -6,9 +6,9 @@ public class SlimeMain : CharaBase
     // Use this for initialization
     void Start()
     {
-        animControl = GetComponent<Animation>();
-        animControl.Play("Wait");
-        animControl.wrapMode = WrapMode.Loop;
+        InitAnimController(GetComponent<Animation>());
+        animControl.CrossFadeLoopAnim(CharaAnimController.AnimId.Wait);
+
         speed = 0.02f;
         isAttack = false;
     }
@@ -25,18 +25,6 @@ public class SlimeMain : CharaBase
             else
             {
                 state &= (int)~State.KnockBack;
-            }
-        }
-
-        if ((animState & (int)AnimState.Damage) > 0)
-        {
-            if (!animControl.isPlaying)
-            {
-                animState &= (int)~AnimState.Damage;
-
-                animControl.CrossFade("Wait");
-                animControl.wrapMode = WrapMode.Loop;
-
                 Destroy(gameObject);
             }
         }

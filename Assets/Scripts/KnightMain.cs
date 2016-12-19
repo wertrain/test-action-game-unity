@@ -8,10 +8,10 @@ public class KnightMain : CharaBase {
     // Use this for initialization
     void Start ()
     {
-        animControl = GetComponent<Animation>();
+        InitAnimController(GetComponent<Animation>());
+        animControl.CrossFadeLoopAnim(CharaAnimController.AnimId.Wait);
+
         swordCollider = GetComponentInChildren<BoxCollider>();
-        animControl.Play("Wait");
-        animControl.wrapMode = WrapMode.Loop;
         speed = 0.05f;
         isAttack = false;
         swordCollider.enabled = false;
@@ -22,7 +22,7 @@ public class KnightMain : CharaBase {
     {
         if (isAttack)
         {
-            if (animControl.isPlaying)
+            if (animControl.IsPlaying(CharaAnimController.AnimId.Attack))
             {
                 if (!swordCollider.enabled && attackStartTime + 0.35f < Time.time)
                 {
@@ -39,8 +39,7 @@ public class KnightMain : CharaBase {
         {
             if (Input.GetKey("space"))
             {
-                animControl.CrossFade("Attack");
-                animControl.wrapMode = WrapMode.Once;
+                animControl.CrossFadeOnceAnim(CharaAnimController.AnimId.Attack);
 
                 isAttack = true;
                 attackStartTime = Time.time;
@@ -60,13 +59,11 @@ public class KnightMain : CharaBase {
                 transform.rotation = Quaternion.LookRotation(newDir);
                 transform.position += moveDirection;
 
-                animControl.CrossFade("Walk");
-                animControl.wrapMode = WrapMode.Loop;
+                animControl.CrossFadeLoopAnim(CharaAnimController.AnimId.Walk);
             }
             else
             {
-                animControl.CrossFade("Wait");
-                animControl.wrapMode = WrapMode.Loop;
+                animControl.CrossFadeLoopAnim(CharaAnimController.AnimId.Wait);
             }
         }
     }
