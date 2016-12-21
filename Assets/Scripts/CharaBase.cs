@@ -37,9 +37,24 @@ public class CharaBase : MonoBehaviour
         knockbackDir = transform.position - dir;
         knockbackDir.y = 0;
 
-        state |= (int)State.KnockBack;
+        AddStateFlag(State.KnockBack);
         knockBackStartTime = Time.time;
 
         animControl.CrossFadeOnceAnim(CharaAnimController.AnimId.Damage);
+    }
+
+    protected bool CheckState(State stateId)
+    {
+        return ((state & (int)stateId) > 0);
+    }
+
+    protected void AddStateFlag(State stateId)
+    {
+        state |= (int)stateId;
+    }
+
+    protected void RemoveStateFlag(State stateId)
+    {
+        state &= (int)~stateId;
     }
 }

@@ -16,7 +16,7 @@ public class SlimeMain : CharaBase
     // Update is called once per frame
     void Update()
     {
-        if ((state & (int)State.KnockBack) > 0)
+        if (CheckState(State.KnockBack))
         {
             if (knockBackStartTime + 0.3f > Time.time)
             {
@@ -24,7 +24,7 @@ public class SlimeMain : CharaBase
             }
             else
             {
-                state &= (int)~State.KnockBack;
+                RemoveStateFlag(State.KnockBack);
                 Destroy(gameObject);
             }
         }
