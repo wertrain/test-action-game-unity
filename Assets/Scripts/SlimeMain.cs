@@ -18,9 +18,9 @@ public class SlimeMain : CharaBase
     {
         if (CheckState(State.KnockBack))
         {
-            if (knockBackStartTime + 0.3f > Time.time)
+            if (knockBackStartTime + 0.1f > Time.time)
             {
-                transform.position += (knockbackDir * 0.1f);
+                transform.position += (knockbackDir * 0.2f);
             }
             else
             {
