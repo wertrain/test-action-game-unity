@@ -67,4 +67,12 @@ public class KnightMain : CharaBase {
             }
         }
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("EnemySight"))
+        {
+            
+        }
+    }
 }
