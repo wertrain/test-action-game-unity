@@ -9,7 +9,6 @@ public class EnemySight : MonoBehaviour
     void Start ()
     {
         parent = gameObject.transform.parent.gameObject;
-        Debug.Log(parent.name);
     }
 	
     // Update is called once per frame
@@ -20,11 +19,11 @@ public class EnemySight : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("SlimeMain::OnCollisionEnter");
+        //Debug.Log("EnemySight::OnCollisionEnter -> " + collision.gameObject.name);
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("EnemySight::OnTriggerEnter");
+        Debug.Log("EnemySight::OnTriggerEnter -> " + collider.name);
     }
 }

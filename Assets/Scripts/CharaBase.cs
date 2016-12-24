@@ -22,7 +22,8 @@ public class CharaBase : MonoBehaviour
     protected enum State
     {
         Wait = 1 << 0,
-        KnockBack = 1 << 1
+        KnockBack = 1 << 1,
+        Following = 1 << 2
     };
 
     // アニメーションコントローラーの初期化

@@ -24,7 +24,7 @@ public class KnightMain : CharaBase {
         {
             if (animControl.IsPlaying(CharaAnimController.AnimId.Attack))
             {
-                if (!swordCollider.enabled && attackStartTime + 0.30f < Time.time)
+                if (!swordCollider.enabled && attackStartTime + 0.20f < Time.time)
                 {
                     swordCollider.enabled = true;
                 }
@@ -70,12 +70,12 @@ public class KnightMain : CharaBase {
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("KnightMain::OnCollisionEnter");
+        //Debug.Log("KnightMain::OnCollisionEnter -> " + collision.gameObject.name);
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("KnightMain::OnTriggerEnter");
+        //Debug.Log("KnightMain::OnTriggerEnter -> " + collider.name);
     }
 
 }
