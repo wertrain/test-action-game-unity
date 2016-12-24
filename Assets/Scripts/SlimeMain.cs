@@ -32,14 +32,11 @@ public class SlimeMain : CharaBase
 
     void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log("SlimeMain::OnCollisionEnter");
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Sword"))
-        {
-            Knockback(collider.gameObject.transform.position);
-        }
+        Debug.Log("SlimeMain::OnTriggerEnter");
     }
 }
