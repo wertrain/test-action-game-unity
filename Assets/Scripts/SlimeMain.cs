@@ -4,6 +4,7 @@ using System.Collections;
 public class SlimeMain : CharaBase
 {
     private Vector3 followPos;
+    private BoxCollider sightCollider;
 
     // Use this for initialization
     void Start()
@@ -13,6 +14,8 @@ public class SlimeMain : CharaBase
 
         speed = 0.04f;
         isAttack = false;
+
+        sightCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
