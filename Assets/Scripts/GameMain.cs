@@ -20,7 +20,7 @@ public class GameMain : MonoBehaviour
     {
         if (respawnTime + 3.0f < Time.time)
         {
-            enemyFactory.Put(new Vector3(Random.value * 8.0f - Random.value * 8.0f, 0, Random.value * 8.0f - Random.value * 8.0f));
+            //enemyFactory.Put(new Vector3(Random.value * 8.0f - Random.value * 8.0f, 0, Random.value * 8.0f - Random.value * 8.0f));
             respawnTime = Time.time;
         }
     }
