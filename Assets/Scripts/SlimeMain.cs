@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SlimeMain : CharaBase
 {
-    private Vector3 followPos;
     private BoxCollider sightCollider;
 
     // Use this for initialization
@@ -60,13 +59,11 @@ public class SlimeMain : CharaBase
         if (collider.gameObject.CompareTag("Sword"))
         {
             Knockback(collider.gameObject.transform.position);
-            return;
         }
 
         if (collider.gameObject.CompareTag("Player"))
         {
-            AddStateFlag(State.Following);
-            followPos = collider.gameObject.transform.position;
+            Following(collider.gameObject.transform.position);
         }
     }
 }

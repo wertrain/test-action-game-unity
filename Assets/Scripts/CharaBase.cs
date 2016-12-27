@@ -25,6 +25,8 @@ public class CharaBase : MonoBehaviour
         KnockBack = 1 << 1,
         Following = 1 << 2
     };
+    // 追跡する位置
+    protected Vector3 followPos;
 
     // アニメーションコントローラーの初期化
     public void InitAnimController(Animation anim)
@@ -57,5 +59,11 @@ public class CharaBase : MonoBehaviour
     protected void RemoveStateFlag(State stateId)
     {
         state &= (int)~stateId;
+    }
+
+    protected void Following(Vector3 pos)
+    {
+        AddStateFlag(State.Following);
+        followPos = pos;
     }
 }
