@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockFactory : MonoBehaviour {
+public class BlockFactory {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private GameObject blockSource;
+
+    public BlockFactory()
+    {
+
+    }
+
+    public void SetSource(GameObject source)
+    {
+        blockSource = source;
+    }
+
+    public void Put(Vector3 pos)
+    {
+        GameObject copied = Object.Instantiate(blockSource) as GameObject;
+        copied.transform.Translate(pos);
+    }
 }

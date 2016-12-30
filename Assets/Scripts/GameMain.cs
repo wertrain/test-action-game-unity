@@ -7,12 +7,18 @@ public class GameMain : MonoBehaviour
     private float respawnTime;
     public GameObject enemySource;
 
+    private BlockFactory blockFactory;
+    public GameObject blockSource;
+
     // Use this for initialization
     void Start ()
     {
         enemyFactory = new EnemyFactory();
         enemyFactory.SetSource(enemySource);
         respawnTime = Time.time;
+
+        blockFactory = new BlockFactory();
+        blockFactory.SetSource(blockSource);
     }
 	
     // Update is called once per frame
