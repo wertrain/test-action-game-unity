@@ -3,10 +3,12 @@ using System.Collections;
 
 public class GameMain : MonoBehaviour
 {
+    private const float ENEMY_RESPAWN_RANGE = 8.0f;
     private EnemyFactory enemyFactory;
     private float enemyRespawnTime;
     public GameObject enemySource;
 
+    private const float BLOCK_CREATE_RANGE = 8.0f;
     private BlockFactory blockFactory;
     private float blockCreateTime;
     public GameObject blockSource;
@@ -28,13 +30,13 @@ public class GameMain : MonoBehaviour
     {
         if (enemyRespawnTime + 3.0f < Time.time)
         {
-            //enemyFactory.Put(new Vector3(Random.value * 8.0f - Random.value * 8.0f, 0, Random.value * 8.0f - Random.value * 8.0f));
+            //enemyFactory.Put(new Vector3(Random.value * ENEMY_RESPAWN_RANGE - Random.value * ENEMY_RESPAWN_RANGE, 0, Random.value * ENEMY_RESPAWN_RANGE - Random.value * ENEMY_RESPAWN_RANGE));
             enemyRespawnTime = Time.time;
         }
 
         if (blockCreateTime + 3.0f < Time.time)
         {
-            blockFactory.Put(new Vector3(Random.value * 8.0f - Random.value * 8.0f, 0, Random.value * 8.0f - Random.value * 8.0f));
+            blockFactory.Put(new Vector3(Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE, 0, Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE));
             blockCreateTime = Time.time;
         }
     }
