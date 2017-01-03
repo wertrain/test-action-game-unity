@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockFactory {
+public class GameObjectFactory
+{
 
-    private GameObject blockSource;
+    private GameObject objectSource;
 
-    public BlockFactory()
+    public GameObjectFactory()
     {
 
     }
 
     public void SetSource(GameObject source)
     {
-        blockSource = source;
+        objectSource = source;
     }
 
     public void Put(Vector3 pos)
     {
-        GameObject copied = Object.Instantiate(blockSource) as GameObject;
+        GameObject copied = Object.Instantiate(objectSource) as GameObject;
         copied.transform.Translate(pos);
     }
 }
