@@ -23,6 +23,7 @@ public class GameMain : MonoBehaviour
 
         blockFactory = new GameObjectFactory();
         blockFactory.SetSource(blockSource);
+        blockCreateTime = Time.time;
     }
 	
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class GameMain : MonoBehaviour
 
         if (blockCreateTime + 3.0f < Time.time)
         {
-            blockFactory.Put(new Vector3(Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE, 0, Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE));
+            //blockFactory.Put(new Vector3(Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE, 0, Random.value * BLOCK_CREATE_RANGE - Random.value * BLOCK_CREATE_RANGE));
             blockCreateTime = Time.time;
         }
     }

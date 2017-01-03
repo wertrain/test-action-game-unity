@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GameObjectFactory
 {
-
     private GameObject objectSource;
 
     public GameObjectFactory()
