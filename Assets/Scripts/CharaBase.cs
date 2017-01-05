@@ -27,6 +27,8 @@ public class CharaBase : MonoBehaviour
     };
     // 追跡する位置
     protected Vector3 followPos;
+    // 追跡する対象に対するオフセット位置
+    protected Vector3 followOffset;
 
     // アニメーションコントローラーの初期化
     public void InitAnimController(Animation anim)
@@ -65,5 +67,6 @@ public class CharaBase : MonoBehaviour
     {
         AddStateFlag(State.Following);
         followPos = pos;
+        followOffset = new Vector3(0,0,0);
     }
 }

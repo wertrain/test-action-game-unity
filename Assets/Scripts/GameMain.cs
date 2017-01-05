@@ -13,7 +13,6 @@ public class GameMain : MonoBehaviour
     private float blockCreateTime;
     public GameObject blockSource;
 
-
     // Use this for initialization
     void Start ()
     {
