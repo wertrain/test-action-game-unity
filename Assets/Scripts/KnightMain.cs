@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KnightMain : CharaBase {
+public class KnightMain : CharaBase
+{
     // 剣当たり判定領域
     private BoxCollider swordCollider;
 

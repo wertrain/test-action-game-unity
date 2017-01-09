@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 //[RequireComponent(typeof(MeshRenderer))]
 //[RequireComponent(typeof(MeshFilter))]
-public class WeaponTrail : MonoBehaviour {
-
+public class WeaponTrail : MonoBehaviour
+{
     // 軌跡のポリゴン数
     private const int MAX_TRAIL_NUM = 7;
     // 軌跡を描く根の位置

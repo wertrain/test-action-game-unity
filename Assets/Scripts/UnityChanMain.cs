@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UnityChanMain : MonoBehaviour {
-
+public class UnityChanMain : MonoBehaviour
+{
     private Animator animator;
     private float speed;
 

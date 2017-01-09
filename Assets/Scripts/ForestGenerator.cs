@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ForestGenerator : MonoBehaviour {
-
+public class ForestGenerator : MonoBehaviour
+{
     // 元となるゲームオブジェクト
     public GameObject tree1;
     public GameObject tree2;

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour {
-
+public class FollowPlayer : MonoBehaviour
+{
     public Transform target;
     private Vector3 offset;
 
